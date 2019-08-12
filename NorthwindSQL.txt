@@ -1,0 +1,47 @@
+SELECT * FROM Customers;
+
+SELECT DISTINCT Country From Customers;
+
+SELECT * FROM Customers WHERE customerID LIKE 'Bl%';
+
+SELECT TOP 100 * FROM Orders;
+
+SELECT * FROM Customers WHERE postalCode = '1010'
+OR postalCode = '3012'
+OR postalCode = '12209'
+OR postalCode = '05023'
+
+SELECT * FROM Orders WHERE ShipRegion IS NOT NULL;
+
+SELECT * FROM Customers Order By Country, City;
+
+INSERT INTO customers(CustomerID, CompanyName, ContactName, ContactTitle,
+Address, City, Region, PostalCode, Country, Phone, Fax)
+VALUES ('544','Subway','Bob Smith','Manager','2242 Phillips','Toledo','Ohio','43614','USA','4196668686','4484803487' )
+
+UPDATE Orders SET ShipRegion='EuroZone' WHERE ShipCountry = 'France';
+
+DELETE FROM [Order Details] WHERE Quantity = 1;
+
+SELECT AVG(Quantity) AS average FROM [Order Details];
+SELECT MAX(Quantity) AS Largest FROM [Order Details];
+SELECT MIN(Quantity) AS smallest From [Order Details];
+
+SELECT AVG(Quantity) As average,
+MAX(Quantity) As largest,
+MIN(Quantity) As smallest
+FROM [Order Details] Group By OrderID;
+
+SELECT customerID From orders WHERE orderid = '10290';
+
+SELECT Orders.OrderID, Customers.ContactName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+SELECT * FROM Orders Left Join Customers ON Orders.CustomerID = Customers.CustomerID;
+SELECT * FROM Orders Right Join Customers ON Orders.CustomerID = Customers.CustomerID;
+
+SELECT FirstName from Employees WHERE ReportsTO is Null;
+
+SELECT FirstName from Employees WHERE ReportsTO = 2;
+
+
